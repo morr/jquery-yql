@@ -72,6 +72,16 @@
 
                  $.ajax(yqlJson);
                  return $self.toReturn;
+             },
+             yqlJSON: function(url, callback) {
+                 return $.yql("SELECT * FROM json WHERE url=#{url}", {url: url}, function(data) {
+                    callback(data.query.results.json);
+                 });
+             },
+             yqlXML: function(url, callback) {
+                 return $.yql("SELECT * FROM xml WHERE url=#{url}", {url: url}, function(data) {
+                     callback(data.query.results);
+                 });
              }
          }
      );
