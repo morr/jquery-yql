@@ -75,7 +75,7 @@
              },
              yqlJSON: function(url, callback) {
                  return $.yql("SELECT * FROM json WHERE url=#{url}", {url: url}, function(data) {
-                    callback(data.query.results.json);
+                    callback(data.query.results && data.query.results.json);
                  });
              },
              yqlXML: function(url, callback) {
